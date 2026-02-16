@@ -1,0 +1,258 @@
+﻿<UserControl x:Class="SFRT_PlanningScript.Views.SphereDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SFRT_PlanningScript.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Height="880"
+             Width="620">
+
+
+       <StackPanel Orientation="Vertical"
+                   Margin="0,0,0,0"
+                   IsEnabled="True">
+              <StackPanel Orientation="Horizontal">
+
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,10,10">
+                            <Label Width="100"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Content="GTV"/>
+                            <ComboBox x:Name="TargetList"
+                                      ItemsSource="{Binding TargetStructures}"
+                                      SelectedIndex="{Binding TargetSelected}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      VerticalAlignment="Top"
+                                      Width="123"/>
+                     </StackPanel>
+
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,10,10">
+                            <Label Width="100"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Content="PTV__Low"/>
+                            <ComboBox x:Name="PtvList"
+                                      ItemsSource="{Binding TargetStructures}"
+                                      SelectedIndex="{Binding PtvSelected}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      VerticalAlignment="Top"
+                                      Width="123"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,10,10">
+                            <Label Width="100"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Content="Body contour"/>
+                            <ComboBox x:Name="BodyContour"
+                                      ItemsSource="{Binding AllStructures}"
+                                      SelectedIndex="{Binding BodySelected}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      VerticalAlignment="Top"
+                                      Width="123"/>
+                     </StackPanel>
+
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,10,10">
+                            <Label Width="120"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Content="Body margin (mm)"/>
+                            <TextBox x:Name="BodyMargin"
+                                     Text="{Binding BodyMargin}"
+                                     HorizontalAlignment="Center"
+                                     Height="26"
+                                     VerticalAlignment="Top"
+                                     Width="60"/>
+                     </StackPanel>
+              </StackPanel>
+
+              <StackPanel Orientation="Vertical">
+                     <TextBlock Margin="10,10,10,10"
+                                Width="Auto"
+                                HorizontalAlignment="Left"
+                                Text="Choose neighboring OARs to avoid placing spheres nearby. A minimum margin from selected OARs will be enforced. Peak spheres will also only be allowed within a minimum distance from the body contour using the above body margin."
+                                TextWrapping="Wrap"/>
+              </StackPanel>
+
+
+              <StackPanel Orientation="Horizontal">
+
+                     <DataGrid  Grid.Row="8"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="1"
+                                Grid.RowSpan="4"
+                                HorizontalAlignment="Stretch"
+                                Margin="5"
+                                SelectionMode="Extended"
+                                SelectionUnit="FullRow"
+                                Height="200"
+                                ItemsSource="{Binding SelectedOars}"
+                                SelectedIndex="{Binding SelectedTableOar}"
+                                AutoGenerateColumns="False"
+                                CanUserSortColumns="True">
+                            <DataGrid.Columns>
+                                   <DataGridTemplateColumn Header="Name"
+                                                           IsReadOnly="True"
+                                                           Width="200">
+                                          <DataGridTemplateColumn.CellTemplate>
+                                                 <DataTemplate>
+                                                        <TextBlock Text="{Binding}"/>
+                                                 </DataTemplate>
+                                          </DataGridTemplateColumn.CellTemplate>
+                                   </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                     </DataGrid>
+
+
+                     <StackPanel Orientation="Horizontal"
+                                 Grid.Row="8"
+                                 Grid.Column="1">
+
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,10,10,10">
+                                   <TextBlock Text="Select ROI"/>
+                                   <ComboBox x:Name="SelectRoiComboBox"
+                                             ItemsSource="{Binding OarStructures}"
+                                             SelectedIndex="{Binding SelectedOar}"
+                                             HorizontalAlignment="Left"
+                                             Height="26"
+                                             VerticalAlignment="Top"
+                                             Width="123"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,10,10,10">
+                                   <Button Width="100"
+                                           Margin="5"
+                                           Click="AddRoi"
+                                           Content="Add"/>
+                                   <Button Width="100"
+                                           Margin="5"
+                                           Click="RemoveRoi"
+                                           Content="Remove"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical"
+                                        Margin="10,10,0,10">
+                                   <Label Width="120"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Top"
+                                          Content="OAR margin (mm)"/>
+                                   <TextBox x:Name="OarMargin"
+                                            Text="{Binding OarMargin}"
+                                            HorizontalAlignment="Center"
+                                            Height="26"
+                                            VerticalAlignment="Top"
+                                            Width="60"/>
+                            </StackPanel>
+                     </StackPanel>
+              </StackPanel>
+
+
+              <StackPanel Orientation="Horizontal">
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,0,10">
+                            <Label Content="Couch kick"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Height="30"/>
+                            <CheckBox Margin="10,10,10,10"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      IsChecked="{Binding CouchKick}"/>
+                     </StackPanel>
+
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,0,10">
+                            <Label Content="Machine ID"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Height="30"/>
+                            <ComboBox x:Name="MachineIdComboBox"
+                                      ItemsSource="{Binding MachineIds}"
+                                      SelectedIndex="{Binding SelectedMachineId}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      Margin="0, 0, 0, 0"
+                                      VerticalAlignment="Top"
+                                      Width="100"/>
+                     </StackPanel>
+
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,0,10">
+                            <Label Content="Energy"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Height="30"/>
+                            <ComboBox x:Name="BeamEnergyComboBox"
+                                      ItemsSource="{Binding EnergyList}"
+                                      SelectedIndex="{Binding SelectedEnergy}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      Margin="0, 0, 0, 0"
+                                      VerticalAlignment="Top"
+                                      Width="100"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,0,10">
+                            <Label Content="Lattice sphere diameter (cm)"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Height="30"/>
+                            <ComboBox x:Name="SphereSizeComboBox"
+                                      ItemsSource="{Binding SphereSize}"
+                                      SelectedIndex="{Binding SelectedSphereSize}"
+                                      HorizontalAlignment="Left"
+                                      Height="26"
+                                      Margin="0, 0, 0, 0"
+                                      VerticalAlignment="Top"
+                                      Width="123"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Vertical"
+                                 Margin="10,10,0,10">
+                            <Label Content="High resolution"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   Height="30"/>
+                            <CheckBox Margin="10,10,10,10"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Top"
+                                      IsChecked="{Binding HighRes}"/>
+                     </StackPanel>
+              </StackPanel>
+
+              <StackPanel Orientation="Horizontal">
+                     <Button Height="26"
+                             Width="130"
+                             Margin="10,10,10,10"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Content="Create"
+                             Click="CreateLattice"
+                             IsEnabled="{Binding EnableCreate}"/>
+                     <Button Height="26"
+                             Width="200"
+                             Margin="10,10,10,10"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Content="Set Objectives"
+                             Click="Optimize"
+                             IsEnabled="{Binding EnableOptimize}"/>
+              </StackPanel>
+
+              <ScrollViewer Height="200"
+                            Width="500"
+                            Margin="10"
+                            VerticalScrollBarVisibility="Auto">
+                     <TextBlock Margin="10"
+                                Text="{Binding Output}">
+
+                     </TextBlock>
+              </ScrollViewer>
+
+       </StackPanel>
+</UserControl>

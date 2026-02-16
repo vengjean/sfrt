@@ -1,0 +1,7 @@
+﻿ROI Name,FunctionType,Weighting,Dose Level,Percent,NumberGoal,Intermediate ROI Name,AtMost/AtLeast,% or Absolute,Dose or volume at,At dose or volume,Weight,,,,,,
+PTVm_6670,MinDVH,400,6000,93,1,PTVm_6670,AtLeast,DoseAtVolume,6000,0.92,550,,,,,,
+Eval_PTVm_Avoid,UniformDose,100,1050,,2,Eval_PTVm_Avoid,AtMost,DoseAtVolume,1100,0,120,Eval_PTVm_Avoid,AtLeast,DoseAtVolume,1000,1,120
+PTVm_6670,MaxDose,20,7000,,0,None,,,,,,,,,,,
+x_Ring1,MaxDose,10,1100,,0,None,,,,,,,,,,,
+x_Ring2,MaxDose,10,800,,0,None,,,,,,,,,,,
+x_Ring3,MaxDose,10,500,,0,None,,,,,,,,,,,
