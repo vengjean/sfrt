@@ -1,0 +1,8 @@
+﻿ROI Name,AtMost/AtLeast,% or Absolute,Dose or volume at,At dose or volume
+VTV_HD,AtLeast,DoseAtVolume,6000,0.9
+VTV_HD,AtMost,DoseAtAbsoluteVolume,7800,0.1
+Eval_PTV_LD;PTV_LD,AtLeast,VolumeAtDose,0.95,950
+Eval_PTV_LD;PTV_LD,AtMost,DoseAtAbsoluteVolume,7800,0.1
+VTV_LD,AtMost,AverageDose,1100,0
+VTV_LD,AtLeast,AverageDose,1000,0
+PTV_Control,AtMost,DoseAtAbsoluteVolume,5100,2

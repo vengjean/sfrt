@@ -1,0 +1,5 @@
+﻿ROI Name,FunctionType,Weighting,Dose Level,Percent,NumberGoal,ROI Name,AtMost/AtLeast,% or Absolute,Dose or volume at,At dose or volume,Weight
+VTV_HD,MinDose,400,6800,,1,VTV_HD,AtLeast,DoseAtVolume,6670,0.92,500
+VTV_LD,MaxDose,200,2400,,1,VTV_LD,AtMost,DoseAtAbsoluteVolume,2400,0,250
+GTV,MinDose,200,2050,,1,GTV,AtLeast,DoseAtVolume,2000,0.99,300
+Eval_PTV_LD;PTV_LD,MinDose,100,2000,,1,Eval_PTV_LD;PTV_LD,AtLeast,DoseAtVolume,1900,0.95,200

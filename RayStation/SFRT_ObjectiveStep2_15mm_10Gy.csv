@@ -1,0 +1,7 @@
+﻿ROI Name,FunctionType,Weighting,Dose Level,Percent,NumberGoal,Intermediate ROI Name,AtMost/AtLeast,% or Absolute,Dose or volume at,At dose or volume,Weight,,,,,,
+VTV_HD,MinDVH,400,6000,93,1,VTV_HD,AtLeast,DoseAtVolume,6000,0.92,550,,,,,,
+VTV_LD,UniformDose,100,1050,,2,VTV_LD,AtMost,DoseAtVolume,1100,0,120,VTV_LD,AtLeast,DoseAtVolume,1000,1,120
+VTV_HD,MaxDose,20,7000,,0,None,,,,,,,,,,,
+x_Ring1,MaxDose,10,1100,,0,None,,,,,,,,,,,
+x_Ring2,MaxDose,10,800,,0,None,,,,,,,,,,,
+x_Ring3,MaxDose,10,500,,0,None,,,,,,,,,,,
